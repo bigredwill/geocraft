@@ -1,6 +1,6 @@
 geocraft
 ========
-Goal 1: Create playable minecraft maps based off of USGS data.
+Goal 1: Create playable minecraft maps based off of geographical data.
 ========
   
   Objectives
