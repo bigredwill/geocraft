@@ -14,7 +14,5 @@ Goal 2: Geo-spawning.  When a player logs into the server, they will be spawned 
 ==========  
   Objectives
   - get player's location on login.
-    - How accurate can we get?
-    - City based spawning? Or lat/lng precise spawning?
   - spawn them.
 
