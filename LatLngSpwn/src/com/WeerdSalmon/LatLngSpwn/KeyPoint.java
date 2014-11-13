@@ -16,6 +16,14 @@ public class KeyPoint {
 		this.gc = gc;
 	}
 	
+	public GeoCoordinate getGC(){
+		return this.gc;
+	}
+	
+	public MinecraftCoordinate getMC(){
+		return this.mc;
+	}
+	
 	public MinecraftCoordinate mcDistFromKeyPoint(MinecraftCoordinate fc) {
 		int x, y, z;
 		x = mc.x - fc.x;
@@ -26,7 +34,7 @@ public class KeyPoint {
 
 	
 	public GeoCoordinate gcDistFromKeyPoint(GeoCoordinate fc) {
-		float lat, lng;
+		double lat, lng;
 		lat = gc.latitude - fc.latitude;
 		lng = gc.longitude - fc.longitude;
 		return new GeoCoordinate(lat, lng);

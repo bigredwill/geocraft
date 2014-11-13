@@ -12,7 +12,7 @@ public class LoginListener implements Listener {
 	@EventHandler
     public void normalLogin(PlayerLoginEvent event) {
         plug.getLogger().info(event.getAddress().getHostAddress() + " "+ event.getPlayer().getDisplayName());
-        plug.locFind.ipToGC(event.getAddress().getHostAddress());
+//        plug.locFind.ipToGC(event.getAddress().getHostAddress());
 //        event.getPlayer().setBedSpawnLocation(arg0, arg1);
         
         

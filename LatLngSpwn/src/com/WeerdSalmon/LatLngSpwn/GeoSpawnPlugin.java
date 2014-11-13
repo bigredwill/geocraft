@@ -39,14 +39,37 @@ public class GeoSpawnPlugin extends JavaPlugin implements Listener {
 				int y = e.getBlockY();
 				int z = e.getBlockZ();
 				getLogger().info("You are at\tx: " + x+" y: " + y);
-				player.sendMessage("You are at x: " + x+" y: " + y);
+				player.sendMessage("You are at x: " + x+" y: " + y + " z: " + z);
 				
-				locFind.mcToGC(new MinecraftCoordinate(x, y, z));
+				GeoCoordinate gc = locFind.mcToGC(new MinecraftCoordinate(x, y, z));
+				player.sendMessage("And you're real world coordinates are: " + gc.toString());
 				return true;
 			}
 			
-		} else if (cmd.getName().equalsIgnoreCase("setKeyPoint")) {
-			
+		} else if (cmd.getName().equalsIgnoreCase("setkeypoint")) {
+			if(args.length < 5) {
+				sender.sendMessage("/setKeyPoint <x> <y> <z> <lat> <lng>");	
+			}
+			else {
+				int x = Integer.parseInt(args[0]);
+				int y = Integer.parseInt(args[1]);
+				int z = Integer.parseInt(args[2]);
+				double lat = Double.parseDouble(args[3]);
+				double lng = Double.parseDouble(args[4]);
+				MinecraftCoordinate mc = new MinecraftCoordinate(x, y, z);
+				GeoCoordinate gc = new GeoCoordinate(lat, lng);
+				locFind.setKeyPoint(new KeyPoint(mc, gc));
+				sender.sendMessage("KeyPointSet at " + mc.toString() + " " + gc.toString());
+			}
+		} else if (cmd.getName().equalsIgnoreCase("setscale")) {
+			if(args.length != 1) {
+				sender.sendMessage("/setscale <scale>");	
+			}
+			else {
+				float s = Float.parseFloat(args[0]);
+				locFind.setScale(s);
+				sender.sendMessage("Scale set to: " + s);
+			}
 		}
 		return false;
 		

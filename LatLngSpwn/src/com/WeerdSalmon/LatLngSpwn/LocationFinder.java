@@ -20,6 +20,7 @@ import org.bukkit.plugin.Plugin;
 
 public class LocationFinder {
 	private Plugin plug;
+	public KeyPoint key;
 	
 	// Append IP to get location information
 	private String dbipkey = "ee58ea25056523ef408053b761fb5d07e7abe472";
@@ -28,8 +29,7 @@ public class LocationFinder {
 	// Append address, zipcode, or lat/lng
 	private String googleUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=";
 
-	public double scale;
-	public MinecraftCoordinate home;
+	public double scale = 1;
 	
 	
 	
@@ -40,7 +40,11 @@ public class LocationFinder {
 	}
 	
 	public void setKeyPoint(KeyPoint k) {
-		
+		this.key = k;
+	}
+	
+	public void setScale(double s) {
+		this.scale = s;
 	}
 	
 	
@@ -50,11 +54,40 @@ public class LocationFinder {
 			//to lat lon
 			//whereis lat lon
 		
+		MinecraftCoordinate vect = this.key.mcDistFromKeyPoint(mc);
+		plug.getLogger().info("distance from keypoint: "+ vect.toString());
 		
+		double metersLat = vect.x*scale;
+		double metersLng = vect.z*scale;
+		plug.getLogger().info(metersLat + " "+metersLng);
+		double lat = metersToLat(metersLat);
+		plug.getLogger().info("latitude: "+lat);
+		double lng = metersToLng(metersLng, lat);
+		plug.getLogger().info("longitude: " + lng);
 		
+		lat += key.gc.latitude;
+		lng += key.gc.longitude;
+		plug.getLogger().info("latitude: "+lat);
+		plug.getLogger().info("longitude: " + lng);
 		
-		return null;
+		return new GeoCoordinate(lat,lng);
 		
+	}
+	
+	public double metersToLng(double meters, double lat){
+		double newLng = 0;
+		
+		newLng = meters / (GeoCoordinate.LNGTOM*Math.cos(lat) * 1000);
+		
+		return newLng;
+	}
+	
+	public double metersToLat(double meters){
+		double newLat = 0;
+		
+		newLat = meters/ GeoCoordinate.LATTOM;
+		plug.getLogger().info("meters: " + meters);
+		return newLat;
 	}
 	
 	
@@ -73,7 +106,7 @@ public class LocationFinder {
 
 		float latitude = 1;
 		float longitude = 1;
-		return home;
+		return new MinecraftCoordinate();
 
 		
 	}

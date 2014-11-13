@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.WeerdSalmon.LatLngSpwn.LocationFinder"/>
+<fullyQualifiedTypeName name="com.WeerdSalmon.LatLngSpwn.LoginListener"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.io.InputStreamReader"/>
+<fullyQualifiedTypeName name="org.json.simple.JSONObject"/>
+<fullyQualifiedTypeName name="org.bukkit.craftbukkit.libs.com.google.gson.stream.JsonReader"/>
+<fullyQualifiedTypeName name="org.json.simple.parser.JSONParser"/>
+<fullyQualifiedTypeName name="com.google.gson.Gson"/>
+<fullyQualifiedTypeName name="com.google.gson.JsonElement"/>
+<fullyQualifiedTypeName name="com.google.gson.JsonParser"/>
+<fullyQualifiedTypeName name="com.google.gson.JsonObject"/>
+<fullyQualifiedTypeName name="org.bukkit.craftbukkit.libs.com.google.gson.JsonElement"/>
+<fullyQualifiedTypeName name="org.bukkit.craftbukkit.libs.com.google.gson.JsonParser"/>
+<fullyQualifiedTypeName name="org.bukkit.craftbukkit.libs.com.google.gson.JsonObject"/>
+<fullyQualifiedTypeName name="com.WeerdSalmon.LatLngSpwn.MinecraftCoordinate"/>
+<fullyQualifiedTypeName name="com.WeerdSalmon.LatLngSpwn.KeyPoint"/>
+<fullyQualifiedTypeName name="com.WeerdSalmon.LatLngSpwn.GeoCoordinate"/>
+</qualifiedTypeNameHistroy>

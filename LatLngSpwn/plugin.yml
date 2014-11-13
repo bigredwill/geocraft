@@ -9,3 +9,5 @@ commands:
     description: name
   whereami:
     description: What is your real life position?
+  setkeypoint:
+    description: Set the keypoint for GeoCraft
