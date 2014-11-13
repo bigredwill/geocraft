@@ -1,0 +1,17 @@
+/**
+ * 
+ */
+package com.WeerdSalmon.LatLngSpwn;
+
+/**
+ * @author Casa
+ *
+ */
+public class KeyPoint {
+	public MinecraftCoordinate mc;
+	public GeoCoordinate gc;
+	public KeyPoint(MinecraftCoordinate mc, GeoCoordinate gc) {
+		
+	}
+
+}

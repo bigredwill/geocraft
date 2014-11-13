@@ -1,0 +1,11 @@
+name: LatLngSpwn
+main: com.WeerdSalmon.LatLngSpwn.GeoSpawnPlugin
+version: 0.2
+
+commands:
+  hey:
+    description: hoooo
+  name:
+    description: name
+  whereami:
+    description: What is your real life position?
