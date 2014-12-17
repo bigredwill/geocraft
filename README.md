@@ -1,22 +1,21 @@
-geocraft
+GeoCraft
 ========
 
-~~Goal 1: Create playable minecraft maps based off of geographical data.~~
+CraftBukkit 1.9 Minecraft Plugin for cs185c, Virtual Environments, Fall 2014
+
 ========
-  
-  Objectives
+commands:
+    whereami:
+      description: What is your real life position?
+    setkeypoint:
+      description: Set the keypoint for GeoCraft
+    setscale:
+      description: Set the scale for GeoCraft
+    getdefaults:
+      description: Get the set defaults for GeoCraft
 
-  [x] Convert USGS data in to Minecraft maps  (DEM to NBT to .mcr) 
-  
+To test it out, simply put GeoCraft.jar in to your CraftBukkit server's plugins folder.
 
-Goal 2: Geo-Location.  Convert Minecraft coordinates to real world coordinates, and vice-versa.
-==========  
-  Objectives
-  [x] Define scaling system for Minecraft to real world coordinates.
-  [x] Figure out conversion for Degrees to Meters.
-   - Get Position based upon IP
-    - HTTP from java, parsing javascript, idk why this is so difficult.
-   - spawn based upon ip location
-   - teleport based on zipcode, city, landmark (Google Maps API)
-    - HTTP once again
+Once in game, you need to /setkeypoint and /setscale.
 
+After that, /whereami will tell you your Geocoded location.
