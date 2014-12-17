@@ -6,26 +6,31 @@ CraftBukkit 1.9 Minecraft Plugin for cs185c, Virtual Environments, Fall 2014
 ========
 commands:
 
-    whereami: 
 
-      description: What is your real life position?
+    whereami:
 
+      description: Gets your current realworld position based off of your current Minecraft location.
+
+    geotp: <lat> <lng>
+
+        description: Teleport to the Minecraft location associated with a Latitude/Longitdue pair.
+
+    whereis: <x> <y> <z>
+
+        description: Gets the real world location of a Minecraft coordinate.
 
     setkeypoint: <x> <y> <z> <lat> <lng>
 
-      description: Set the keypoint for GeoCraft
+        description: Set the keypoint for GeoCraft
 
+    setscale: <scale>  ( 1 Minecraft Block ) * scale = 1 Earth meter
 
-    setscale: <scale> 
-
-      ( 1 Minecraft Block ) * scale = 1 Earth meter
-
-      description: Set the scale for GeoCraft
-
+        description: Set the scale for GeoCraft
 
     getdefaults:
 
-      description: Get the set defaults for GeoCraft
+        description: Get the defaults for GeoCraft
+
 
 
 

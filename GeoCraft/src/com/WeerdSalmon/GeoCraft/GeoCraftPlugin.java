@@ -1,7 +1,10 @@
 package com.WeerdSalmon.GeoCraft;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -67,6 +70,45 @@ public class GeoCraftPlugin extends JavaPlugin implements Listener {
 				return true;
 			}
 			
+		} else if (cmd.getName().equalsIgnoreCase("geotp")) {
+			if(args.length != 2) {
+				sender.sendMessage("/geotp <lat> <lng>");	
+			}
+			else {
+				double lat = Double.parseDouble(args[0]);
+				double lng = Double.parseDouble(args[1]);
+				
+				MinecraftCoordinate mc = locFind.gcToMC(new GeoCoordinate(lat, lng));
+				
+				
+				getLogger().info(mc.toString());
+				
+				if(sender instanceof Player) {
+					Player player = (Player) sender;
+					World world = Bukkit.getServer().getWorld("world");
+					Block y = world.getHighestBlockAt(mc.x, mc.z);
+					player.teleport(new Location(world, mc.x, y.getY() + 1, mc.z));
+					sender.sendMessage("You are now at: " + mc.toString());
+				}
+				
+
+			}
+		} else if (cmd.getName().equalsIgnoreCase("whereis")) {
+			if(args.length != 3) {
+				sender.sendMessage("/whereis <x> <y> <z>");	
+			}
+			else {
+				int x = Integer.parseInt(args[0]);
+				int y = Integer.parseInt(args[1]);
+				int z = Integer.parseInt(args[2]);
+				
+				GeoCoordinate gc = locFind.mcToGC(new MinecraftCoordinate(x,y,z));
+				
+				sender.sendMessage(gc.toString());
+				getLogger().info(gc.toString());
+				
+
+			}
 		} else if (cmd.getName().equalsIgnoreCase("setkeypoint")) {
 			if(args.length < 5) {
 				sender.sendMessage("/setKeyPoint <x> <y> <z> <lat> <lng>");	

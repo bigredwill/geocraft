@@ -4,7 +4,11 @@ version: 0.99999
 
 commands:
   whereami:
-    description: What is your real life position?
+    description: Gets your current realworld position based off of your current Minecraft location.
+  geotp:
+    description: Teleport to the Minecraft location associated with a Latitude/Longitdue pair.
+  whereis:
+    description: Gets the real world location of a Minecraft coordinate.
   setkeypoint:
     description: Set the keypoint for GeoCraft
   setscale:

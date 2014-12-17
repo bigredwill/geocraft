@@ -29,22 +29,7 @@ public class LocationFinder {
 		this.plug = p;
 
 	}
-	
-	public MinecraftCoordinate gcToMC(GeoCoordinate gc) {
-		//Calculate distance between keypoint and gc 
-		GeoCoordinate vectDiff = this.key.gcDistFromKeyPoint(gc);
-		
-		//convert to meters and scale according to map scale
-		int xScaled = (int) (latToMeters(vectDiff.latitude) / scale);
-		int zScaled = (int) (lngToMeters(vectDiff.longitude) / scale);
-		
-		//get Minecraft coordinates from keypoint
-		xScaled += key.mc.x;
-		zScaled += key.mc.z;
-		
-		return new MinecraftCoordinate(xScaled,0,zScaled);
-	}
-	
+
 	public String geocode(GeoCoordinate gc) {
 		
 		//https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452
@@ -88,19 +73,38 @@ public class LocationFinder {
 		return (int) Math.ceil(longitude * (LNGTOMETERS*Math.cos(longitude) * 1000));
 	}
 	
+	public MinecraftCoordinate gcToMC(GeoCoordinate gc) {
+		//Calculate distance traveled from keypoint in lat/lng 
+		GeoCoordinate vectDiff = this.key.gcDistFromKeyPoint(gc);
+		
+		//convert lat/lng to meters, then scale Meters -> Minecraft Blocks
+		int zScaled = (int) Math.floor(latToMeters(vectDiff.latitude) / scale);
+		int xScaled = (int) Math.floor(lngToMeters(vectDiff.longitude) / scale);
+		
+		//add Block vectors to keypoint to get location
+		zScaled = key.mc.z + zScaled; //latitude
+		xScaled = key.mc.x - xScaled; //longitude
+		
+		return new MinecraftCoordinate(xScaled,0,zScaled);
+	}
+	
 	public GeoCoordinate mcToGC(MinecraftCoordinate mc){
 
-		//calculate distance in Minecraft Blocks
+		//calculate distance traveled from keypoint in Minecraft Blocks
 		MinecraftCoordinate vectDiff = this.key.mcDistFromKeyPoint(mc);
 		
+		//scale block distance to meters
 		double xScaled = vectDiff.x * scale;
 		double zScaled = vectDiff.z * scale;
 		
+		//convert meters traveled to lng/lat traveled
 		double lat = metersToLat(zScaled);
 		double lng = metersToLng(xScaled, lat);
 		
+		//add lat/lng vectors to keypoint to get location
 		lat = key.gc.latitude + lat;
 		lng = key.gc.longitude - lng;
+		
 		return new GeoCoordinate(lat,lng);
 	}
 	
