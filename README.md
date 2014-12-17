@@ -6,12 +6,14 @@ CraftBukkit 1.9 Minecraft Plugin for cs185c, Virtual Environments, Fall 2014
 ========
 commands:
 
-    whereami:
+    whereami: <scale> 
+
+      ( 1 Minecraft Block ) * scale = 1 Earth meter
 
       description: What is your real life position?
 
 
-    setkeypoint:
+    setkeypoint: <x> <y> <z> <lat> <lng>
 
       description: Set the keypoint for GeoCraft
 
@@ -25,7 +27,7 @@ commands:
 
       description: Get the set defaults for GeoCraft
 
-      
+
 
 To test it out, simply put GeoCraft.jar in to your CraftBukkit server's plugins folder.
 
