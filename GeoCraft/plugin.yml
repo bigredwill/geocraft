@@ -1,0 +1,13 @@
+name: GeoCraft
+main: com.WeerdSalmon.GeoCraft.GeoCraftPlugin
+version: 0.99999
+
+commands:
+  whereami:
+    description: What is your real life position?
+  setkeypoint:
+    description: Set the keypoint for GeoCraft
+  setscale:
+    description: Set the scale for GeoCraft
+  getdefaults:
+    description: Get the defaults for GeoCraft
